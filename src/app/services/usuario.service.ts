@@ -17,14 +17,18 @@ export class UsuarioService {
     }
 
     get(): Observable<UsuarioModel[]> {
-        return this.http.get<UsuarioModel[]>(this.url + "/usuarios", { headers: this.getHeaders() });
+        return this.http.get<UsuarioModel[]>(this.url + "usuarios", { headers: this.getHeaders() });
     }
 
     getById(id: number): Observable<UsuarioModel> {
-        return this.http.get<UsuarioModel>(this.url + "/usuarios/" + id, { headers: this.getHeaders() });
+        return this.http.get<UsuarioModel>(this.url + "usuarios/" + id, { headers: this.getHeaders() });
+    }
+
+    update(id: number, usuario: UsuarioModel): Observable<UsuarioModel> {
+        return this.http.put<UsuarioModel>(this.url + "usuarios/" + id, usuario, { headers: this.getHeaders() });
     }
 
     delete(id: number): Observable<void> {
-        return this.http.delete<void>(this.url + "/usuarios/" + id, { headers: this.getHeaders() });
+        return this.http.delete<void>(this.url + "usuarios/" + id, { headers: this.getHeaders() });
     }
 }
